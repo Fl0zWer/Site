@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(0px);
+            transition: filter 0.3s ease;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 50px;
+            border-radius: 10px;
+        }
+
+        .content h1 {
+            margin: 0 0 20px;
+            font-size: 3em;
+        }
+
+        .content p {
+            margin: 0 0 20px;
+            font-size: 1.2em;
+        }
+
+        .glow-button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: white;
+            background-color: transparent;
+            border: 2px solid white;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 0 15px white;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .glow-button:active {
+            background-color: red;
+        }
+
+        .glow-button:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgb(250, 172, 172);
+            opacity: 0;
+            border-radius: 5px;
+            transition: opacity 0.3s ease;
+        }
+
+        .glow-button:active:after {
+            opacity: 1;
+        }
+
+    </style>
+</head>
+<body>
+    <video class="video-background" src="fondo.mp4" autoplay loop muted></video>
+    <div class="content">
+        <h1>Pagina De FlozWer</h1>
+        <p>suscribete a mi youtube.</p>
+        <button class="glow-button" onclick="window.open('https://tulink.com', '_blank')">Grr</button>
+    </div>
+
+    <script>
+        let timeout;
+        document.addEventListener('mousemove', function () {
+            document.querySelector('.video-background').style.filter = 'blur(5px)';
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
+                document.querySelector('.video-background').style.filter = 'blur(0px)';
+            }, 400);
+        });
+    </script>
+</body>
+</html>
